@@ -6,11 +6,13 @@ import { DataService } from '../data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  users: Object;
   constructor(private data: DataService) {}
   h1Style: boolean = false;
-  ngOnInit() {}
-
-  firstClick() {
-    this.data.firstClick();
+  ngOnInit() {
+    this.data.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(data);
+    });
   }
 }
